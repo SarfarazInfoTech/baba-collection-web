@@ -25,10 +25,10 @@ const Cart = () => {
     <div className="row bg-secondary py-1 px-xl-5">
       <div className="col-lg-6 d-none d-lg-block">
         <div className="d-inline-flex align-items-center h-100">
-          <a className="text-body mr-3" href>About</a>
-          <a className="text-body mr-3" href>Contact</a>
-          <a className="text-body mr-3" href>Help</a>
-          <a className="text-body mr-3" href>FAQs</a>
+          <a className="text-body mr-3" href="About" >About</a>
+          <a className="text-body mr-3" href="Contact" >Contact</a>
+          <a className="text-body mr-3" href="Help" >Help</a>
+          <a className="text-body mr-3" href="FAQs" >FAQs</a>
         </div>
       </div>
       <div className="col-lg-6 text-center text-lg-right">
@@ -149,11 +149,11 @@ const Cart = () => {
               <a href="contact.html" className="nav-item nav-link">Contact</a>
             </div>
             <div className="navbar-nav ml-auto py-0 d-none d-lg-block">
-              <a href className="btn px-0">
+              <a href="saved" className="btn px-0">
                 <i className="fas fa-heart text-primary" />
                 <span className="badge text-secondary border border-secondary rounded-circle" style={{paddingBottom: '2px'}}>0</span>
               </a>
-              <a href className="btn px-0 ml-3">
+              <a href="cart" className="btn px-0 ml-3">
                 <i className="fas fa-shopping-cart text-primary" />
                 <span className="badge text-secondary border border-secondary rounded-circle" style={{paddingBottom: '2px'}}>0</span>
               </a>
@@ -348,23 +348,23 @@ const Cart = () => {
           <div className="col-md-4 mb-5">
             <h5 className="text-secondary text-uppercase mb-4">Quick Shop</h5>
             <div className="d-flex flex-column justify-content-start">
-              <a className="text-secondary mb-2" href="#"><i className="fa fa-angle-right mr-2" />Home</a>
-              <a className="text-secondary mb-2" href="#"><i className="fa fa-angle-right mr-2" />Our Shop</a>
-              <a className="text-secondary mb-2" href="#"><i className="fa fa-angle-right mr-2" />Shop Detail</a>
-              <a className="text-secondary mb-2" href="#"><i className="fa fa-angle-right mr-2" />Shopping Cart</a>
-              <a className="text-secondary mb-2" href="#"><i className="fa fa-angle-right mr-2" />Checkout</a>
-              <a className="text-secondary" href="#"><i className="fa fa-angle-right mr-2" />Contact Us</a>
+              <a className="text-secondary mb-2" href="Home"><i className="fa fa-angle-right mr-2" />Home</a>
+              <a className="text-secondary mb-2" href="Our Shop"><i className="fa fa-angle-right mr-2" />Our Shop</a>
+              <a className="text-secondary mb-2" href="Shop Detail"><i className="fa fa-angle-right mr-2" />Shop Detail</a>
+              <a className="text-secondary mb-2" href="Shopping Cart"><i className="fa fa-angle-right mr-2" />Shopping Cart</a>
+              <a className="text-secondary mb-2" href="Checkout"><i className="fa fa-angle-right mr-2" />Checkout</a>
+              <a className="text-secondary" href="Contact Us"><i className="fa fa-angle-right mr-2" />Contact Us</a>
             </div>
           </div>
           <div className="col-md-4 mb-5">
             <h5 className="text-secondary text-uppercase mb-4">My Account</h5>
             <div className="d-flex flex-column justify-content-start">
-              <a className="text-secondary mb-2" href="#"><i className="fa fa-angle-right mr-2" />Home</a>
-              <a className="text-secondary mb-2" href="#"><i className="fa fa-angle-right mr-2" />Our Shop</a>
-              <a className="text-secondary mb-2" href="#"><i className="fa fa-angle-right mr-2" />Shop Detail</a>
-              <a className="text-secondary mb-2" href="#"><i className="fa fa-angle-right mr-2" />Shopping Cart</a>
-              <a className="text-secondary mb-2" href="#"><i className="fa fa-angle-right mr-2" />Checkout</a>
-              <a className="text-secondary" href="#"><i className="fa fa-angle-right mr-2" />Contact Us</a>
+              <a className="text-secondary mb-2" href="Home"><i className="fa fa-angle-right mr-2" />Home</a>
+              <a className="text-secondary mb-2" href="Our Shop"><i className="fa fa-angle-right mr-2" />Our Shop</a>
+              <a className="text-secondary mb-2" href="Shop Detail"><i className="fa fa-angle-right mr-2" />Shop Detail</a>
+              <a className="text-secondary mb-2" href="Shopping Cart"><i className="fa fa-angle-right mr-2" />Shopping Cart</a>
+              <a className="text-secondary mb-2" href="Checkout"><i className="fa fa-angle-right mr-2" />Checkout</a>
+              <a className="text-secondary" href="Contact Us"><i className="fa fa-angle-right mr-2" />Contact Us</a>
             </div>
           </div>
           <div className="col-md-4 mb-5">

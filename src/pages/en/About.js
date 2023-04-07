@@ -1,16 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Head from "@/app/head";
+import React from 'react'
 
-const about = (props) => {
+const About = () => {
   return (
-    <div>
-      <Head title={"about"} />
-      <h1>about</h1>
-    </div>
-  );
-};
+    <div>About</div>
+  )
+}
 
-about.propTypes = {};
-
-export default about;
+export default About
