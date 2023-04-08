@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./app/App.js";
 import "./app/app.css";
-import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -10,5 +9,3 @@ root.render(
     <App />
   </React.StrictMode>
 );
-
-reportWebVitals();
