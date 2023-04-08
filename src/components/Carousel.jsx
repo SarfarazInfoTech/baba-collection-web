@@ -13,7 +13,7 @@ const Carousel = () => {
               </ol>
               <div className="carousel-inner">
                 <div className="carousel-item position-relative active" style={{height: '430px'}}>
-                  <img className="position-absolute w-100 h-100" src="img/carousel-1.jpg" style={{objectFit: 'cover'}} />
+                  <img className="position-absolute w-100 h-100" src="img/carousel-1.jpg" alt='' style={{objectFit: 'cover'}} />
                   <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div className="p-3" style={{maxWidth: '700px'}}>
                       <h1 className="display-4 text-white mb-3 animate__animated animate__fadeInDown">Men Fashion</h1>
@@ -51,7 +51,7 @@ const Carousel = () => {
               <div className="offer-text">
                 <h6 className="text-white text-uppercase">Save 20%</h6>
                 <h3 className="text-white mb-3">Special Offer</h3>
-                <a href className="btn btn-primary">Shop Now</a>
+                <a  className="btn btn-primary">Shop Now</a>
               </div>
             </div>
             <div className="product-offer mb-30" style={{height: '200px'}}>
@@ -59,7 +59,7 @@ const Carousel = () => {
               <div className="offer-text">
                 <h6 className="text-white text-uppercase">Save 20%</h6>
                 <h3 className="text-white mb-3">Special Offer</h3>
-                <a href className="btn btn-primary">Shop Now</a>
+                <a  className="btn btn-primary">Shop Now</a>
               </div>
             </div>
           </div>
