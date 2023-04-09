@@ -9,12 +9,11 @@ import {
 export const getProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_PRODUCT_REQUEST });
-
-    const { data } = await axios.get("/api/v1/products");
-    
-    dispatch({
-      type: ALL_PRODUCT_SUCCESS,
-      payload: data,
+    await axios.get("/api/v1/products").then((data) => {
+      dispatch({
+        type: ALL_PRODUCT_SUCCESS,
+        payload: data.data,
+      });
     });
   } catch (error) {
     dispatch({
