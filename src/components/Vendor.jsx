@@ -5,7 +5,7 @@ const Vendor = () => {
     <div className="container-fluid py-5">
         <div className="row px-xl-5">
           <div className="col">
-            <div className="owl-carousel vendor-carousel">
+            <div className="d-flex overflow-auto">
               <div className="bg-light p-4">
                 <img src="img/vendor-1.jpg" alt="" />
               </div>

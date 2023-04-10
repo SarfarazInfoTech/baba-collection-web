@@ -31,7 +31,11 @@ const FeaturedProducts = () => {
           </h2>
           <div className="row px-xl-5">
             {products &&
-              products.map((product) => <ProductCard product={product} key={product._id} />)}
+              products.map((product) => (
+                <div className="col-lg-3 col-md-4 col-sm-6 pb-1">
+                  <ProductCard product={product} key={product._id} />
+                </div>
+              ))}
           </div>
         </div>
       )}

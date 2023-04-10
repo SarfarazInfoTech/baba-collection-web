@@ -11,49 +11,44 @@ const ProductCard = ({ product }) => {
     isHalf: true,
   };
   return (
-    <div className="col-lg-3 col-md-4 col-sm-6 pb-1">
-      <div className="product-item bg-light mb-4">
-        <div
-          className="product-img position-relative overflow-hidden"
-          style={{ height: "300px" }}
-        >
-          <img
-            className="img-fluid w-100 h-100"
-            src={product.images[0].url}
-            alt=""
-          />
-          <div className="product-action">
-            <a className="btn btn-outline-dark btn-square" href="">
-              <i className="fa fa-shopping-cart" />
-            </a>
-            <a className="btn btn-outline-dark btn-square" href="">
-              <i className="far fa-heart" />
-            </a>
-            <a className="btn btn-outline-dark btn-square" href="">
-              <i className="fa fa-sync-alt" />
-            </a>
-            <a className="btn btn-outline-dark btn-square" href="">
-              <i className="fa fa-search" />
-            </a>
-          </div>
-        </div>
-        <div className="text-center py-4">
-          <a
-            className="h6 text-decoration-none "
-            href={`/${product._id}`}
-          >
-            {product.name}
+    <div className="product-item bg-light mb-4">
+      <div
+        className="product-img position-relative overflow-hidden"
+        style={{ height: "300px" }}
+      >
+        <img
+          className="img-fluid w-100 h-100"
+          src={product.images[0].url}
+          alt=""
+        />
+        <div className="product-action">
+          <a className="btn btn-outline-dark btn-square" href="">
+            <i className="fa fa-shopping-cart" />
           </a>
-          <div className="d-flex align-items-center justify-content-center mt-2">
-            <h5>₹ {product.price}</h5>
-            <h6 className="text-muted ml-2">
-              <del>{product.price - 100}₹</del>
-            </h6>
-          </div>
-          <div className="d-flex align-items-center justify-content-center mb-1">
-            <ReactStars {...options} />
-            <small>({product.numOfReviews})</small>
-          </div>
+          <a className="btn btn-outline-dark btn-square" href="">
+            <i className="far fa-heart" />
+          </a>
+          <a className="btn btn-outline-dark btn-square" href="">
+            <i className="fa fa-sync-alt" />
+          </a>
+          <a className="btn btn-outline-dark btn-square" href="">
+            <i className="fa fa-search" />
+          </a>
+        </div>
+      </div>
+      <div className="text-center py-4">
+        <a className="h6 text-decoration-none " href={`/${product._id}`}>
+          {product.name}
+        </a>
+        <div className="d-flex align-items-center justify-content-center mt-2">
+          <h5>₹ {product.price}</h5>
+          <h6 className="text-muted ml-2">
+            <del>{product.price - 100}₹</del>
+          </h6>
+        </div>
+        <div className="d-flex align-items-center justify-content-center mb-1">
+          <ReactStars {...options} />
+          <small>({product.numOfReviews})</small>
         </div>
       </div>
     </div>
