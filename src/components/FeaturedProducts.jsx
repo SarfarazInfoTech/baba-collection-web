@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { getProduct } from "../actions/ProductAction";
+import { clearError, getProduct } from "../actions/ProductAction";
 import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "./cards/ProductCard";
 import Loading from "./Loading";
@@ -14,7 +14,8 @@ const FeaturedProducts = () => {
 
   useEffect(() => {
     if (error) {
-      return alert.error(error);
+      alert.error(error);
+      dispatch(clearError());
     }
     dispatch(getProduct());
   }, [dispatch, error, alert]);
