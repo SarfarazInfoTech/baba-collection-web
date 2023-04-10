@@ -4,16 +4,21 @@ import { getProduct } from "../actions/ProductAction";
 import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "./cards/ProductCard";
 import Loading from "./Loading";
+import { useAlert } from "react-alert";
 
 const FeaturedProducts = () => {
+  const alert = useAlert();
   const dispatch = useDispatch();
   const { loading, error, products, productCount } = useSelector(
     (state) => state.products
   );
 
   useEffect(() => {
+    if (error) {
+      return alert.error(error);
+    }
     dispatch(getProduct());
-  }, [dispatch]);
+  }, [dispatch, error, alert]);
 
   return (
     <>
@@ -26,7 +31,7 @@ const FeaturedProducts = () => {
           </h2>
           <div className="row px-xl-5">
             {products &&
-              products.map((product) => <ProductCard product={product} />)}
+              products.map((product) => <ProductCard product={product} key={product._id} />)}
           </div>
         </div>
       )}
