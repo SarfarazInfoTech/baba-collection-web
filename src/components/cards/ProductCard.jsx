@@ -40,7 +40,7 @@ const ProductCard = ({ product }) => {
         <div className="text-center py-4">
           <a
             className="h6 text-decoration-none "
-            href={`product/${product._id}`}
+            href={`/${product._id}`}
           >
             {product.name}
           </a>
