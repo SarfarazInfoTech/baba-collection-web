@@ -5,7 +5,7 @@ const SearchProduct = () => {
   const [keyword, setKeyword] = useState("");
 
   const SearchProductHandler = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     if (keyword.trim()) {
       history.push(`/Products/${keyword}`);
     } else {

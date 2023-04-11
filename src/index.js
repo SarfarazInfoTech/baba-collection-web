@@ -1,4 +1,7 @@
 import React from "react";
+import "../src/boostraps/css/style.css";
+import "../src/boostraps/lib/animate/animate.min.css";
+import "../src/boostraps/lib/owlcarousel/assets/owl.carousel.min.css";
 import ReactDOM from "react-dom/client";
 import App from "./app/App.js";
 import "./app/app.css";
