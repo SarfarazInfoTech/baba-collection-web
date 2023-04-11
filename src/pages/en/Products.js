@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { clearError, getProduct } from "../../actions/ProductAction";
 import Backtotop from "../../components/Backtotop";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -11,6 +12,7 @@ import Loading from "../../components/Loading";
 import Topbar from "../../components/Topbar";
 
 const Products = () => {
+  const { keyword } = useParams();
   const alert = useAlert();
   const dispatch = useDispatch();
   const { loading, error, products, productCount } = useSelector(
@@ -22,8 +24,8 @@ const Products = () => {
       alert.error(error);
       dispatch(clearError());
     }
-    dispatch(getProduct());
-  }, [dispatch, error, alert]);
+    dispatch(getProduct(keyword));
+  }, [dispatch, keyword, error, alert]);
 
   return (
     <>

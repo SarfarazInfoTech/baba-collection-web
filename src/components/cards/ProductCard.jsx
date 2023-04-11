@@ -37,7 +37,7 @@ const ProductCard = ({ product }) => {
         </div>
       </div>
       <div className="text-center py-4">
-        <a className="h6 text-decoration-none " href={`/${product._id}`}>
+        <a className="h6 text-decoration-none d-inline-block text-truncate " style={{maxWidth: "300px"}} href={`/${product._id}`}>
           {product.name}
         </a>
         <div className="d-flex align-items-center justify-content-center mt-2">
