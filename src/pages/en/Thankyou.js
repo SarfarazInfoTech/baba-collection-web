@@ -2,7 +2,7 @@ import React from "react";
 
 const Thankyou = () => {
   return (
-    <div class="jumbotron text-center">
+    <div class="jumbotron text-center" style={{height: '100vh'}}>
       <h1 class="display-3">Thank You!</h1>
       <p class="lead">
         <strong>Please check your email</strong> for further instructions on how

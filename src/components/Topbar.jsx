@@ -80,7 +80,7 @@ const Topbar = () => {
           <p className="m-0">
             <i className="fas fa-user"></i> Create an account
           </p>
-          <Link to="login">
+          <Link to="/login">
             <h5 className="m-0">
               Login <i className="fas fa-sign-in-alt"></i>{" "}
             </h5>

@@ -10,6 +10,8 @@ import AdminLogin from "../pages/admin/AdminLogin";
 import AdminSignup from "../pages/admin/AdminSignup";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import Thankyou from "../pages/en/Thankyou";
+import Login from "../pages/users/Login";
+import Signup from "../pages/users/Signup";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
       <Routes>
         {/* End-User */}
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/Products" element={<Products />} />
         <Route path="Products/:keyword" element={<Products />} />
         <Route path="/ProductDetails" element={<ProductDetails />} />
