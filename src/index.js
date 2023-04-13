@@ -1,10 +1,10 @@
 import React from "react";
+import "./app/app.css";
 import "../src/boostraps/css/style.css";
 import "../src/boostraps/lib/animate/animate.min.css";
 import "../src/boostraps/lib/owlcarousel/assets/owl.carousel.min.css";
-import ReactDOM from "react-dom/client";
 import App from "./app/App.js";
-import "./app/app.css";
+import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import store from "./Store.js";
 import { positions, transitions, Provider as AlertProvider } from "react-alert";

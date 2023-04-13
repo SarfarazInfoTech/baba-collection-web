@@ -9,6 +9,7 @@ import About from "../pages/en/About";
 import AdminLogin from "../pages/admin/AdminLogin";
 import AdminSignup from "../pages/admin/AdminSignup";
 import AdminDashboard from "../pages/admin/AdminDashboard";
+import Thankyou from "../pages/en/Thankyou";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/Cart" element={<Cart />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/About" element={<About />} />
+        <Route path="/thankyou" element={<Thankyou />} />
 
         {/* Admin-user */}
         <Route path="/Admin-Login" element={<AdminLogin />} />

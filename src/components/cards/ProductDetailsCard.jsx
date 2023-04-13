@@ -179,9 +179,9 @@ const ProductDetailsCard = ({ product }) => {
                 </button>
               </div>
             </div>
-            <button className="btn btn-primary px-3">
+            <a href="/cart" className="btn btn-primary px-3">
               <i className="fa fa-shopping-cart mr-1" /> Add To Cart
-            </button>
+            </a>
           </div>
           <div className="d-flex pt-2">
             <strong className="text-dark mr-2">Share on:</strong>

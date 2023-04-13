@@ -255,9 +255,9 @@ const Cart = () => {
                   <h5>Total</h5>
                   <h5>$160</h5>
                 </div>
-                <button className="btn btn-block btn-primary font-weight-bold my-3 py-3">
+                <a href="/checkout" className="btn btn-block btn-primary font-weight-bold my-3 py-3">
                   Proceed To Checkout
-                </button>
+                </a>
               </div>
             </div>
           </div>

@@ -312,9 +312,9 @@ const Checkout = () => {
                     </label>
                   </div>
                 </div>
-                <button className="btn btn-block btn-primary font-weight-bold py-3">
+                <a href="/thankyou" className="btn btn-block btn-primary font-weight-bold py-3">
                   Place Order
-                </button>
+                </a>
               </div>
             </div>
           </div>

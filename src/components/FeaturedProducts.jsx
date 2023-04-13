@@ -35,7 +35,7 @@ const FeaturedProducts = () => {
           <div className="row px-xl-5">
             {products &&
               products.map((product) => (
-                <div className="col-lg-3 col-md-4 col-sm-6 pb-1">
+                <div className="col-lg-3 col-md-4 col-sm-6 pb-1" key={product._id}>
                   <ProductCard product={product} key={product._id} />
                 </div>
               ))}
