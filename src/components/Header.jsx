@@ -3,24 +3,71 @@ import { useLocation } from "react-router-dom";
 
 const Header = () => {
   const location = useLocation();
-  const active = location.pathname.split("/")[1];
+  // const active = location.pathname.split("/")[1];
+  const active = location.pathname;
   const [show, setShow] = useState(false);
   const [subMenushow, setsubMenuShow] = useState(false);
+
   const menus = [
     {
       id: 1,
-      item: "",
-      route: "",
+      item: "Womens",
+      route: "/Products/Women",
+    },
+    {
+      id: 2,
+      item: "Mens",
+      route: "/Products/Men",
+    },
+    {
+      id: 3,
+      item: "Kids",
+      route: "/Products/Kid",
+    },
+    {
+      id: 4,
+      item: "Boys",
+      route: "/Products/Boy",
+    },
+    {
+      id: 5,
+      item: "Girls",
+      route: "/Products/Girl",
+    },
+    {
+      id: 6,
+      item: "Baby and Health",
+      route: "/Products/Baby-Health",
+    },
+    {
+      id: 7,
+      item: "Beauty and Personal",
+      route: "/Products/Beauty-Personal",
+    },
+    {
+      id: 8,
+      item: "Garments",
+      route: "/Products/Garments",
+    },
+    {
+      id: 9,
+      item: "Footwear",
+      route: "/Products/Footwear",
+    },
+    {
+      id: 10,
+      item: "Jewellery",
+      route: "/Products/Jewellery",
     },
   ];
   const submenu = ``;
   return (
     <div className="container-fluid bg-dark mb-30">
       <div className="row px-xl-5">
-        <div className="col-lg-3 d-none d-lg-block">
+        <div className="col-lg-2 d-none d-lg-block">
           <a
             className="btn d-flex align-items-center justify-content-between bg-primary w-100"
-            style={{ height: "65px", padding: "0 30px" }}
+            style={{ height: "50px", padding: "0 30px" }}
             onClick={() => setShow(!show)}
           >
             <h6 className="text-dark m-0">
@@ -69,8 +116,11 @@ const Header = () => {
             </div>
           </nav>
         </div>
-        <div className="col-lg-9">
-          <nav className="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
+        <div className="col-lg-10">
+          <nav
+            className="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0"
+            style={{ height: "50px" }}
+          >
             <a className="text-decoration-none d-block d-lg-none">
               <span className="h1 text-uppercase text-dark bg-light px-2">
                 Multi
@@ -92,71 +142,26 @@ const Header = () => {
               id="navbarCollapse"
             >
               <div className="navbar-nav mr-auto py-0">
-                <a
-                  href="/"
-                  className={`nav-item nav-link ${
-                    active === "" ? "active" : null
-                  }`}
-                >
-                  Home
-                </a>
-                <a
-                  href="/Products"
-                  className={`nav-item nav-link ${
-                    active === "Products" ? "active" : null
-                  }`}
-                >
-                  Shop
-                </a>
-                {/* <a
-                  href="/ProductDetails"
-                  className={`nav-item nav-link ${
-                    active === "ProductDetails" ? "active" : null
-                  }`}
-                >
-                  Shop Detail
-                </a>
-                <a
-                  href="/cart"
-                  className={`nav-item nav-link ${
-                    active === "cart" ? "active" : null
-                  }`}
-                >
-                  Shopping Cart
-                </a>
-                <a
-                  href="/checkout"
-                  className={`nav-item nav-link ${
-                    active === "checkout" ? "active" : null
-                  }`}
-                >
-                  Checkout
-                </a> */}
-                {/* <div className="nav-item dropdown">
+                {menus.map(({ id, item, route }) => (
                   <a
-                    href="#"
-                    className="nav-link dropdown-toggle"
-                    data-toggle="dropdown"
+                    key={id}
+                    href={route}
+                    className={`nav-item nav-link ${
+                      active === route ? "active" : null
+                    }`}
                   >
-                    Pages <i className="fa fa-angle-down mt-1" />
+                    {item}
                   </a>
-                  <div className="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                    <a href="cart" className="dropdown-item">
-                      Shopping Cart
-                    </a>
-                    <a href="checkout" className="dropdown-item">
-                      Checkout
-                    </a>
-                  </div>
-                </div> */}
-                <a
+                ))}
+
+                {/* <a
                   href="/contact"
                   className={`nav-item nav-link ${
                     active === "contact" ? "active" : null
                   }`}
                 >
                   Contact
-                </a>
+                </a> */}
               </div>
               <div className="navbar-nav ml-auto py-0 d-none d-lg-block">
                 <a className="btn px-0">

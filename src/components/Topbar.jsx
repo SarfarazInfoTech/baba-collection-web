@@ -54,7 +54,7 @@ const Topbar = () => {
         </div> */}
       <div className="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
         <div className="col-lg-3">
-          <a className="text-decoration-none">
+          <a className="text-decoration-none" href="/">
             <span className="h2 text-uppercase text-primary bg-dark px-2">
               Baba{" "}
             </span>
@@ -68,7 +68,7 @@ const Topbar = () => {
         </div>
         <div className="col-lg-2 col-6 text-right">
           <h6 className="m-0">
-            <i className="fas fa-map-marker"></i> Select Location
+            {/* <i className="fas fa-map-marker"></i> Select Location */}
           </h6>
         </div>
         {/* <div className="col-lg-2 col-6 text-right">

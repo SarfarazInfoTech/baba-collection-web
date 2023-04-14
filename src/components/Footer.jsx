@@ -2,14 +2,14 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className="container-fluid bg-dark text-secondary mt-5 pt-5">
+    <div className="container-fluid bg-dark text-secondary mt-5">
         <div className="row px-xl-5 pt-5">
           <div className="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
             <h5 className="text-secondary text-uppercase mb-4">Get In Touch</h5>
             <p className="mb-4">No dolore ipsum accusam no lorem. Invidunt sed clita kasd clita et et dolor sed dolor. Rebum tempor no vero est magna amet no</p>
-            <p className="mb-2"><i className="fa fa-map-marker-alt text-primary mr-3" />123 Street, New York, USA</p>
-            <p className="mb-2"><i className="fa fa-envelope text-primary mr-3" />info@example.com</p>
-            <p className="mb-0"><i className="fa fa-phone-alt text-primary mr-3" />+012 345 67890</p>
+            <p className="mb-2"><i className="fa fa-map-marker-alt text-primary mr-3" />Opp. Babbu Hotal Sadar Bazar Nagpur - 440001</p>
+            <p className="mb-2"><i className="fa fa-envelope text-primary mr-3" />info@babacollection.com</p>
+            <p className="mb-0"><i className="fa fa-phone-alt text-primary mr-3" />+91 8554843519</p>
           </div>
           <div className="col-lg-8 col-md-12">
             <div className="row">
@@ -60,9 +60,8 @@ const Footer = () => {
         <div className="row border-top mx-xl-5 py-4" style={{borderColor: 'rgba(256, 256, 256, .1) !important'}}>
           <div className="col-md-6 px-xl-0">
             <p className="mb-md-0 text-center text-md-left text-secondary">
-              © <a className="text-primary" href="#">Domain</a>. All Rights Reserved. Designed
-              by
-              <a className="text-primary" href="https://htmlcodex.com">HTML Codex</a>
+              © All Rights Reserved <a className="text-primary" href="#">Baba Collection Multistore</a>
+              {/* <a className="text-primary" href="https://htmlcodex.com">HTML Codex</a> */}
             </p>
           </div>
           <div className="col-md-6 px-xl-0 text-center text-md-right">
