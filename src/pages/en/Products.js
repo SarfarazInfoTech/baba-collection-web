@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
+import Pagination from "react-js-pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { clearError, getProduct } from "../../actions/ProductAction";
@@ -12,10 +13,11 @@ import Loading from "../../components/Loading";
 import Topbar from "../../components/Topbar";
 
 const Products = () => {
+  const [CurrentPage, setCurrentPage] = useState(1);
   const { keyword } = useParams();
   const alert = useAlert();
   const dispatch = useDispatch();
-  const { loading, error, products, productCount } = useSelector(
+  const { loading, error, products, productCount, resultPerPage } = useSelector(
     (state) => state.products
   );
 
@@ -24,8 +26,8 @@ const Products = () => {
       alert.error(error);
       dispatch(clearError());
     }
-    dispatch(getProduct(keyword));
-  }, [dispatch, keyword, error, alert]);
+    dispatch(getProduct(keyword, CurrentPage));
+  }, [dispatch, keyword, error, alert, CurrentPage]);
 
   return (
     <>
@@ -333,53 +335,49 @@ const Products = () => {
                   </div>
                 </div>
 
-                {products.length === 0 ? (
+                {products && products.length === 0 ? (
                   <div className="col-lg-4 col-md-6 col-sm-6 pb-1">
                     <h4> No Product Found!</h4>
                   </div>
                 ) : (
                   products &&
                   products.map((product) => (
-                    <div className="col-lg-4 col-md-6 col-sm-6 pb-1">
+                    <div
+                      className="col-lg-4 col-md-6 col-sm-6 pb-1"
+                      key={product._id}
+                    >
                       <ProductCard product={product} key={product._id} />
                     </div>
                   ))
                 )}
-
                 <div className="col-12">
                   <nav>
                     <ul className="pagination justify-content-center">
-                      <li className="page-item disabled">
-                        <a className="page-link" href="#">
-                          Previous
-                        </a>
-                      </li>
-                      <li className="page-item active">
-                        <a className="page-link" href="#">
-                          1
-                        </a>
-                      </li>
-                      <li className="page-item">
-                        <a className="page-link" href="#">
-                          2
-                        </a>
-                      </li>
-                      <li className="page-item">
-                        <a className="page-link" href="#">
-                          3
-                        </a>
-                      </li>
-                      <li className="page-item">
-                        <a className="page-link" href="#">
-                          Next
-                        </a>
-                      </li>
+                      {resultPerPage < productCount && (
+                        <Pagination
+                          activePage={CurrentPage}
+                          itemsCountPerPage={resultPerPage}
+                          totalItemsCount={
+                            products && productCount ? productCount : 0
+                          }
+                          hideFirstLastPages={true}
+                          onChange={(e) => setCurrentPage(e)}
+                          nextPageText="Next"
+                          prevPageText="Previous"
+                          lastPageText="Last"
+                          firstPageText="1st"
+                          itemClass="page-item"
+                          linkClass="page-link"
+                          activeClass="active"
+                          activeLinkClass="active"
+                          hideDisabled={true}
+                        />
+                      )}
                     </ul>
                   </nav>
                 </div>
               </div>
             </div>
-            {/* Shop Product End */}
           </div>
         </div>
       )}

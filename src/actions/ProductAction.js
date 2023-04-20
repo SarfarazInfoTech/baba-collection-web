@@ -9,22 +9,26 @@ import {
   CLEAR_ERRORS,
 } from "../contants/ProductConstant";
 
-export const getProduct = (keyword="") => async (dispatch) => {
-  try {
-    dispatch({ type: ALL_PRODUCT_REQUEST });
-    await axios.get(`/api/v1/products?keyword=${keyword}`).then((data) => {
+export const getProduct =
+  (keyword = "", CurrentPage = 1) =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: ALL_PRODUCT_REQUEST });
+      await axios
+        .get(`/api/v1/products?keyword=${keyword}&page=${CurrentPage}`)
+        .then((data) => {
+          dispatch({
+            type: ALL_PRODUCT_SUCCESS,
+            payload: data.data,
+          });
+        });
+    } catch (error) {
       dispatch({
-        type: ALL_PRODUCT_SUCCESS,
-        payload: data.data,
+        type: ALL_PRODUCT_FAILED,
+        payload: error.response.data.message,
       });
-    });
-  } catch (error) {
-    dispatch({
-      type: ALL_PRODUCT_FAILED,
-      payload: error.response.data.message,
-    });
-  }
-};
+    }
+  };
 
 export const getProductDetails = (id) => async (dispatch) => {
   try {

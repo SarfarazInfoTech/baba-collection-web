@@ -45,7 +45,7 @@ const ProductDetails = () => {
   const options = {
     edit: false,
     color: "rgb(20, 20, 20, 0.1)",
-    activeColor: "#FFD333",
+    activeColor: " #FFD333",
     size: window.innerWidth < 600 ? 20 : 25,
     isHalf: true,
   };

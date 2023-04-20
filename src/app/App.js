@@ -12,6 +12,7 @@ import AdminDashboard from "../pages/admin/AdminDashboard";
 import Thankyou from "../pages/en/Thankyou";
 import Login from "../pages/users/Login";
 import Signup from "../pages/users/Signup";
+import ShopDetails from "../pages/vender/ShopDetails";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         {/* End-User */}
         <Route path="/" element={<Home />} />
+        <Route path="/ShopDetails" element={<ShopDetails />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/Products" element={<Products />} />
