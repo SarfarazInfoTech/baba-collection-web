@@ -10,18 +10,21 @@ import {
 } from "../contants/ProductConstant";
 
 export const getProduct =
-  (keyword = "", CurrentPage = 1) =>
+  (keyword = "", CurrentPage = 1, PriceMin = 100, PriceMax = 15000, category) =>
   async (dispatch) => {
     try {
       dispatch({ type: ALL_PRODUCT_REQUEST });
-      await axios
-        .get(`/api/v1/products?keyword=${keyword}&page=${CurrentPage}`)
-        .then((data) => {
-          dispatch({
-            type: ALL_PRODUCT_SUCCESS,
-            payload: data.data,
-          });
+
+      let link = `/api/v1/products?keyword=${keyword}&page=${CurrentPage}&price[gte]=${PriceMin}&price[lte]=${PriceMax}`;
+      if (category) {
+        link = `/api/v1/products?keyword=${keyword}&page=${CurrentPage}&price[gte]=${PriceMin}&price[lte]=${PriceMax}&category=${category}`;
+      }
+      await axios.get(link).then((data) => {
+        dispatch({
+          type: ALL_PRODUCT_SUCCESS,
+          payload: data.data,
         });
+      });
     } catch (error) {
       dispatch({
         type: ALL_PRODUCT_FAILED,

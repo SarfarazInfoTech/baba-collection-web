@@ -14,6 +14,9 @@ import Topbar from "../../components/Topbar";
 
 const Products = () => {
   const [CurrentPage, setCurrentPage] = useState(1);
+  const [selectedPriceRange, setSelectedPriceRange] = useState("");
+  const [PriceMin, setPriceMin] = useState(100);
+  const [PriceMax, setPriceMax] = useState(130000);
   const { keyword } = useParams();
   const alert = useAlert();
   const dispatch = useDispatch();
@@ -21,13 +24,42 @@ const Products = () => {
     (state) => state.products
   );
 
+  const priceRanges = [
+    { label: "100 ₹ - 500 ₹", value: "100-500" },
+    { label: "500 ₹ - 1000 ₹", value: "500-1000" },
+    { label: "1000 ₹  - 2000 ₹", value: "1000-2000" },
+    { label: "2000 ₹  - 3000 ₹", value: "2000-3000" },
+    { label: "4000 ₹ - 5000 ₹", value: "4000-5000" },
+  ];
+
+  const filteredProducts =
+    products &&
+    products.filter((product) => {
+      if (!selectedPriceRange) return true;
+      const [minPrice, maxPrice] = selectedPriceRange.split("-");
+      if (maxPrice) {
+        return (
+          product.price >= parseInt(minPrice) &&
+          product.price <= parseInt(maxPrice)
+        );
+      } else {
+        return product.price >= parseInt(minPrice);
+      }
+    });
+
+  useEffect(() => {
+    const [minPrice, maxPrice] = selectedPriceRange.split("-");
+    setPriceMax(maxPrice);
+    setPriceMin(minPrice);
+  }, [selectedPriceRange, filteredProducts]);
+
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearError());
     }
-    dispatch(getProduct(keyword, CurrentPage));
-  }, [dispatch, keyword, error, alert, CurrentPage]);
+    dispatch(getProduct(keyword, CurrentPage, PriceMin, PriceMax));
+  }, [dispatch, keyword, error, alert, CurrentPage, PriceMin, PriceMax]);
 
   return (
     <>
@@ -41,84 +73,43 @@ const Products = () => {
           <div className="row px-xl-5">
             {/* Shop Sidebar Start */}
             <div className="col-lg-3 col-md-4">
-              {/* Price Start */}
               <h5 className="section-title position-relative text-uppercase mb-3">
                 <span className="bg-secondary pr-3">Filter by price</span>
               </h5>
               <div className="bg-light p-4 mb-30">
                 <form>
-                  <div className="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                    <input
-                      type="checkbox"
-                      className="custom-control-input"
-                      defaultChecked
-                      id="price-all"
-                    />
-                    <label className="custom-control-label" htmlFor="price-all">
-                      All Price
-                    </label>
-                    <span className="badge border font-weight-normal">
-                      1000
-                    </span>
-                  </div>
-                  <div className="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                    <input
-                      type="checkbox"
-                      className="custom-control-input"
-                      id="price-1"
-                    />
-                    <label className="custom-control-label" htmlFor="price-1">
-                      $0 - $100
-                    </label>
-                    <span className="badge border font-weight-normal">150</span>
-                  </div>
-                  <div className="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                    <input
-                      type="checkbox"
-                      className="custom-control-input"
-                      id="price-2"
-                    />
-                    <label className="custom-control-label" htmlFor="price-2">
-                      $100 - $200
-                    </label>
-                    <span className="badge border font-weight-normal">295</span>
-                  </div>
-                  <div className="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                    <input
-                      type="checkbox"
-                      className="custom-control-input"
-                      id="price-3"
-                    />
-                    <label className="custom-control-label" htmlFor="price-3">
-                      $200 - $300
-                    </label>
-                    <span className="badge border font-weight-normal">246</span>
-                  </div>
-                  <div className="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                    <input
-                      type="checkbox"
-                      className="custom-control-input"
-                      id="price-4"
-                    />
-                    <label className="custom-control-label" htmlFor="price-4">
-                      $300 - $400
-                    </label>
-                    <span className="badge border font-weight-normal">145</span>
-                  </div>
-                  <div className="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                    <input
-                      type="checkbox"
-                      className="custom-control-input"
-                      id="price-5"
-                    />
-                    <label className="custom-control-label" htmlFor="price-5">
-                      $400 - $500
-                    </label>
-                    <span className="badge border font-weight-normal">168</span>
-                  </div>
+                  {priceRanges &&
+                    priceRanges.map((priceRange) => (
+                      <div
+                        key={priceRange.value}
+                        className="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3"
+                      >
+                        <input
+                          type="checkbox"
+                          id={priceRange.value}
+                          name={priceRange.value}
+                          value={priceRange.value}
+                          checked={selectedPriceRange === priceRange.value}
+                          onChange={(event) =>
+                            setSelectedPriceRange(event.target.value)
+                          }
+                          className="custom-control-input"
+                        />
+                        <label
+                          htmlFor={priceRange.value}
+                          className="custom-control-label"
+                        >
+                          {priceRange.label}
+                        </label>
+                        <span className="badge border font-weight-normal">
+                          {selectedPriceRange === priceRange.value &&
+                            products &&
+                            products.length + " Items"}
+                        </span>
+                      </div>
+                    ))}
                 </form>
               </div>
-              {/* Price End */}
               {/* Color Start */}
               <h5 className="section-title position-relative text-uppercase mb-3">
                 <span className="bg-secondary pr-3">Filter by color</span>
@@ -335,13 +326,13 @@ const Products = () => {
                   </div>
                 </div>
 
-                {products && products.length === 0 ? (
+                {filteredProducts && filteredProducts.length === 0 ? (
                   <div className="col-lg-4 col-md-6 col-sm-6 pb-1">
                     <h4> No Product Found!</h4>
                   </div>
                 ) : (
-                  products &&
-                  products.map((product) => (
+                  filteredProducts &&
+                  filteredProducts.map((product) => (
                     <div
                       className="col-lg-4 col-md-6 col-sm-6 pb-1"
                       key={product._id}
@@ -358,7 +349,7 @@ const Products = () => {
                           activePage={CurrentPage}
                           itemsCountPerPage={resultPerPage}
                           totalItemsCount={
-                            products && productCount ? productCount : 0
+                            filteredProducts && productCount ? productCount : 0
                           }
                           hideFirstLastPages={true}
                           onChange={(e) => setCurrentPage(e)}
