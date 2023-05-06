@@ -15,6 +15,7 @@ import Topbar from "../../components/Topbar";
 const Products = () => {
   const [CurrentPage, setCurrentPage] = useState(1);
   const [selectedPriceRange, setSelectedPriceRange] = useState("");
+  const [selectedcategory, setSelectedCategory] = useState("");
   const [PriceMin, setPriceMin] = useState(100);
   const [PriceMax, setPriceMax] = useState(130000);
   const { keyword } = useParams();
@@ -30,6 +31,17 @@ const Products = () => {
     { label: "1000 ₹  - 2000 ₹", value: "1000-2000" },
     { label: "2000 ₹  - 3000 ₹", value: "2000-3000" },
     { label: "4000 ₹ - 5000 ₹", value: "4000-5000" },
+  ];
+
+  const categories = [
+    { label: "Shirts", value: "Shirts" },
+    { label: "Jeans", value: "Jeans" },
+    { label: "Womens's were", value: "Womens's were" },
+    { label: "Swimwear", value: "Swimwear" },
+    { label: "Sleepwear", value: "Sleepwear" },
+    { label: "Sportswear", value: "Sportswear" },
+    { label: "Footwear", value: "Footwear" },
+    { label: "Blazers", value: "Blazers" },
   ];
 
   const filteredProducts =
@@ -58,8 +70,19 @@ const Products = () => {
       alert.error(error);
       dispatch(clearError());
     }
-    dispatch(getProduct(keyword, CurrentPage, PriceMin, PriceMax));
-  }, [dispatch, keyword, error, alert, CurrentPage, PriceMin, PriceMax]);
+    dispatch(
+      getProduct(keyword, CurrentPage, PriceMin, PriceMax, selectedcategory)
+    );
+  }, [
+    dispatch,
+    keyword,
+    error,
+    alert,
+    CurrentPage,
+    PriceMin,
+    PriceMax,
+    selectedcategory,
+  ]);
 
   return (
     <>
@@ -110,84 +133,43 @@ const Products = () => {
                     ))}
                 </form>
               </div>
-              {/* Color Start */}
               <h5 className="section-title position-relative text-uppercase mb-3">
-                <span className="bg-secondary pr-3">Filter by color</span>
+                <span className="bg-secondary pr-3">Filter by category</span>
               </h5>
               <div className="bg-light p-4 mb-30">
                 <form>
-                  <div className="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                    <input
-                      type="checkbox"
-                      className="custom-control-input"
-                      defaultChecked
-                      id="color-all"
-                    />
-                    <label className="custom-control-label" htmlFor="price-all">
-                      All Color
-                    </label>
-                    <span className="badge border font-weight-normal">
-                      1000
-                    </span>
-                  </div>
-                  <div className="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                    <input
-                      type="checkbox"
-                      className="custom-control-input"
-                      id="color-1"
-                    />
-                    <label className="custom-control-label" htmlFor="color-1">
-                      Black
-                    </label>
-                    <span className="badge border font-weight-normal">150</span>
-                  </div>
-                  <div className="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                    <input
-                      type="checkbox"
-                      className="custom-control-input"
-                      id="color-2"
-                    />
-                    <label className="custom-control-label" htmlFor="color-2">
-                      White
-                    </label>
-                    <span className="badge border font-weight-normal">295</span>
-                  </div>
-                  <div className="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                    <input
-                      type="checkbox"
-                      className="custom-control-input"
-                      id="color-3"
-                    />
-                    <label className="custom-control-label" htmlFor="color-3">
-                      Red
-                    </label>
-                    <span className="badge border font-weight-normal">246</span>
-                  </div>
-                  <div className="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                    <input
-                      type="checkbox"
-                      className="custom-control-input"
-                      id="color-4"
-                    />
-                    <label className="custom-control-label" htmlFor="color-4">
-                      Blue
-                    </label>
-                    <span className="badge border font-weight-normal">145</span>
-                  </div>
-                  <div className="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                    <input
-                      type="checkbox"
-                      className="custom-control-input"
-                      id="color-5"
-                    />
-                    <label className="custom-control-label" htmlFor="color-5">
-                      Green
-                    </label>
-                    <span className="badge border font-weight-normal">168</span>
-                  </div>
+                  {categories &&
+                    categories.map((category) => (
+                      <div
+                        key={category.value}
+                        className="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3"
+                      >
+                        <input
+                          type="checkbox"
+                          id={category.value}
+                          name={category.value}
+                          value={category.value}
+                          checked={selectedcategory === category.value}
+                          onChange={(event) =>
+                            setSelectedCategory(event.target.value)
+                          }
+                          className="custom-control-input"
+                        />
+                        <label
+                          htmlFor={category.value}
+                          className="custom-control-label"
+                        >
+                          {category.label}
+                        </label>
+                        <span className="badge border font-weight-normal">
+                          {selectedcategory === category.value &&
+                            products &&
+                            products.length + " Items"}
+                        </span>
+                      </div>
+                    ))}
                 </form>
               </div>
-              {/* Color End */}
               {/* Size Start */}
               <h5 className="section-title position-relative text-uppercase mb-3">
                 <span className="bg-secondary pr-3">Filter by size</span>

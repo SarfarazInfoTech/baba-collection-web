@@ -1,6 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useAlert } from "react-alert";
+import { useDispatch, useSelector } from "react-redux";
+import { clearError, signup } from "../../actions/UserAction";
+import history from "../../session/history";
 
 const Signup = () => {
+  const dispatch = useDispatch();
+  const alert = useAlert();
+  const { loading, error, isAuth } = useSelector((state) => state.user);
+  const [name, setName] = useState("");
+  const [lname, setLname] = useState("");
+  const [email, setEmail] = useState("");
+  const [mobile, setMobile] = useState("8554843519");
+  const [password, setPassword] = useState("");
+
+  const Register = (e) => {
+    e.preventDefault();
+    // const myForm = new FormData();
+    // myForm.set("name", name + lname);
+    // myForm.set("email", email);
+    // myForm.set("mobile", mobile);
+    // myForm.set("password", password);
+    dispatch(signup(name, email, mobile, password));
+  };
+
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch(clearError());
+    }
+    if (isAuth) {
+      history.push("/login");
+      window.location.reload();
+    }
+  }, [dispatch, error, alert, isAuth, history]);
   return (
     <>
       <meta charSet="utf-8" />
@@ -26,7 +59,7 @@ const Signup = () => {
                       </h3>
                     </div>
                     <div className="card-body">
-                      <form>
+                      <form onSubmit={Register}>
                         <div className="row mb-3">
                           <div className="col-md-6">
                             <div className="form-floating mb-3 mb-md-0">
@@ -35,7 +68,10 @@ const Signup = () => {
                                 className="form-control"
                                 id="inputFirstName"
                                 type="text"
+                                name="name"
                                 placeholder="Enter your first name"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
                               />
                             </div>
                           </div>
@@ -46,7 +82,10 @@ const Signup = () => {
                                 className="form-control"
                                 id="inputLastName"
                                 type="text"
+                                name="lname"
                                 placeholder="Enter your last name"
+                                value={lname}
+                                onChange={(e) => setLname(e.target.value)}
                               />
                             </div>
                           </div>
@@ -57,7 +96,10 @@ const Signup = () => {
                             className="form-control"
                             id="inputEmail"
                             type="email"
+                            name="email"
                             placeholder="name@example.com"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                           />
                         </div>
                         <div className="row mb-3">
@@ -68,7 +110,10 @@ const Signup = () => {
                                 className="form-control"
                                 id="inputPassword"
                                 type="password"
+                                name="password"
                                 placeholder="Create a password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                               />
                             </div>
                           </div>
@@ -82,18 +127,17 @@ const Signup = () => {
                                 id="inputPasswordConfirm"
                                 type="password"
                                 placeholder="Confirm password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                               />
                             </div>
                           </div>
                         </div>
                         <div className="mt-4 mb-0">
                           <div className="d-grid">
-                            <a
-                              className="btn btn-primary btn-block"
-                              href="/login"
-                            >
+                            <button className="btn btn-primary btn-block">
                               Create Account
-                            </a>
+                            </button>
                           </div>
                         </div>
                       </form>
