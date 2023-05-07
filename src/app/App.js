@@ -13,6 +13,7 @@ import Thankyou from "../pages/en/Thankyou";
 import Login from "../pages/users/Login";
 import Signup from "../pages/users/Signup";
 import ShopDetails from "../pages/vender/ShopDetails";
+import VendorRegistration from "../pages/vender/VendorRegistration";
 
 function App() {
   return (
@@ -38,6 +39,9 @@ function App() {
         <Route path="/Admin-Login" element={<AdminLogin />} />
         <Route path="/Admin-Signup" element={<AdminSignup />} />
         <Route path="/Admin-Dashboard" element={<AdminDashboard />} />
+
+        {/* Vendor */}
+        <Route path="/VendorRegistration" element={<VendorRegistration />} />
       </Routes>
     </BrowserRouter>
   );
