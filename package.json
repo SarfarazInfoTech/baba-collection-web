@@ -57,5 +57,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://13.235.50.249:4000"
+  "proxy": "https://13.235.50.249:443"
 }
