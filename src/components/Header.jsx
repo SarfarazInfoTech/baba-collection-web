@@ -11,6 +11,7 @@ import { ListItemIcon } from "@mui/material";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import LoginIcon from "@mui/icons-material/Login";
 import AccountIcon from "@mui/icons-material/PersonAdd";
+import { userSession } from "../session/history";
 
 const Header = () => {
   const location = useLocation();
@@ -106,22 +107,25 @@ const Header = () => {
             Shop
           </span>
         </a>
-        {["Create an account", "Login"].map((text, index) => (
-          <Link
-            key={index}
-            to={`/${text === "Login" ? text : "signup"}`}
-            className="text-dark text-decoration-none"
-          >
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemText primary={text} className="text-dark" />
-                <ListItemIcon className="text-dark">
-                  {index % 2 === 0 ? <AccountIcon /> : <LoginIcon />}
-                </ListItemIcon>
-              </ListItemButton>
-            </ListItem>
-          </Link>
-        ))}
+
+        {!userSession && !userSession
+          ? ["Create an account", "Login"].map((text, index) => (
+              <Link
+                key={index}
+                to={`/${text === "Login" ? text : "signup"}`}
+                className="text-dark text-decoration-none"
+              >
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary={text} className="text-dark" />
+                    <ListItemIcon className="text-dark">
+                      {index % 2 === 0 ? <AccountIcon /> : <LoginIcon />}
+                    </ListItemIcon>
+                  </ListItemButton>
+                </ListItem>
+              </Link>
+            ))
+          : null}
       </List>
       <List>
         <h6 className="m-3">Categories</h6>

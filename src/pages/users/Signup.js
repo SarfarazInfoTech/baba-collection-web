@@ -11,7 +11,7 @@ const Signup = () => {
   const [name, setName] = useState("");
   const [lname, setLname] = useState("");
   const [email, setEmail] = useState("");
-  const [mobile, setMobile] = useState("8554843519");
+  const [mobile, setMobile] = useState("");
   const [password, setPassword] = useState("");
 
   const Register = (e) => {
@@ -63,13 +63,13 @@ const Signup = () => {
                         <div className="row mb-3">
                           <div className="col-md-6">
                             <div className="form-floating mb-3 mb-md-0">
-                              <label htmlFor="inputFirstName">First name</label>
+                              <label htmlFor="inputFirstName">Full name</label>
                               <input
                                 className="form-control"
                                 id="inputFirstName"
                                 type="text"
                                 name="name"
-                                placeholder="Enter your first name"
+                                placeholder="Enter your name"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                               />
@@ -77,15 +77,15 @@ const Signup = () => {
                           </div>
                           <div className="col-md-6">
                             <div className="form-floating">
-                              <label htmlFor="inputLastName">Last name</label>
+                              <label htmlFor="inputMobile">Mobile No</label>
                               <input
                                 className="form-control"
-                                id="inputLastName"
-                                type="text"
-                                name="lname"
-                                placeholder="Enter your last name"
-                                value={lname}
-                                onChange={(e) => setLname(e.target.value)}
+                                id="inputMobile"
+                                type="number"
+                                name="mobile"
+                                placeholder="Enter your mobile no"
+                                value={mobile}
+                                onChange={(e) => setMobile(e.target.value)}
                               />
                             </div>
                           </div>
@@ -97,7 +97,7 @@ const Signup = () => {
                             id="inputEmail"
                             type="email"
                             name="email"
-                            placeholder="name@example.com"
+                            placeholder="Enter your email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                           />

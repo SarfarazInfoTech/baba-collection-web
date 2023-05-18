@@ -3,7 +3,7 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { clearError, login } from "../../actions/UserAction";
 import Loading from "../../components/Loading";
-import history from "../../session/history";
+import history, { userSession } from "../../session/history";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -19,8 +19,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (window.sessionStorage.getItem("User"))
-      return window.location.replace("/");
+    if (userSession) return window.location.replace("/");
     if (error) {
       alert.error(error);
       dispatch(clearError());
