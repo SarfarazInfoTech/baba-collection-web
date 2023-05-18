@@ -57,5 +57,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://api.sarfaraztech.com/"
+  "proxy": "http://192.168.206.188:4000"
 }

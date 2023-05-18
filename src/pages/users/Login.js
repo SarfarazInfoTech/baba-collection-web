@@ -8,7 +8,7 @@ import history from "../../session/history";
 const Login = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
-  const { loading, error, isAuth } = useSelector((state) => state.user);
+  const { loading, error, isAuth, user } = useSelector((state) => state.user);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,13 +19,15 @@ const Login = () => {
   };
 
   useEffect(() => {
+    if (window.sessionStorage.getItem("User"))
+      return window.location.replace("/");
     if (error) {
       alert.error(error);
       dispatch(clearError());
     }
     if (isAuth) {
-      history.push("/");
-      window.location.reload();
+      window.sessionStorage.setItem("User", JSON.stringify(user));
+      window.location.replace("/");
     }
   }, [dispatch, error, alert, isAuth, history]);
 
