@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { clearError, signup } from "../../actions/UserAction";
-import history from "../../session/history";
+import history, { userSession } from "../../session/history";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -25,6 +25,7 @@ const Signup = () => {
   };
 
   useEffect(() => {
+    if (userSession) return window.location.replace("/");
     if (error) {
       alert.error(error);
       dispatch(clearError());

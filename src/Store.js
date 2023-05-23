@@ -11,7 +11,7 @@ import { userReducer } from "./reducers/UserReducer";
 const reducer = combineReducers({
   products: productReducer,
   productDetails: productDetailsReducer,
-  user: userReducer
+  user: userReducer,
 });
 
 let initialState = {};
