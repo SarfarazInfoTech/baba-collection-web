@@ -8,18 +8,28 @@ import {
   CLEAR_ERRORS,
   LOGOUT_SUCCESS,
   LOGOUT_FAILED,
+  PROFILE_REQUEST,
+  PROFILE_SUCCESS,
+  PROFILE_FAILED,
+  EDIT_PROFILE_REQUEST,
+  EDIT_PROFILE_SUCCESS,
+  EDIT_PROFILE_FAILED,
 } from "../contants/UserConstant";
 
 export const userReducer = (state = { user: [] }, action) => {
   switch (action.type) {
     case LOGIN_REQUEST:
     case SIGNUP_REQUEST:
+    case PROFILE_REQUEST:
+    case EDIT_PROFILE_REQUEST:
       return {
         loading: true,
         isAuth: false,
       };
     case LOGIN_SUCCESS:
     case SIGNUP_SUCCESS:
+    case PROFILE_SUCCESS:
+    case EDIT_PROFILE_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -28,6 +38,8 @@ export const userReducer = (state = { user: [] }, action) => {
       };
     case LOGIN_FAILED:
     case SIGNUP_FAILED:
+    case PROFILE_FAILED:
+    case EDIT_PROFILE_FAILED:
       return {
         ...state,
         loading: false,
