@@ -24,6 +24,7 @@ const UpdateProfile = () => {
     e.preventDefault();
     dispatch(editProfile(name, email, mobile));
     alert.success("Update Success");
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -36,6 +37,7 @@ const UpdateProfile = () => {
       setEmail(user.email);
       setMobile(user.mobile);
       setPassword(user.password);
+      window.sessionStorage.setItem("User", JSON.stringify(user));
     }
   }, [dispatch, loading, error, isAuth, user]);
 
