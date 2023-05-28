@@ -14,18 +14,12 @@ import Signup from "../pages/users/Signup";
 import ShopDetails from "../pages/vender/ShopDetails";
 import VendorRegistration from "../pages/vender/VendorRegistration";
 
-{
-  /* <Routes>
-  <Route path="/Admin-Login" element={<AdminLogin />} />
-  <Route path="/Admin-Signup" element={<AdminSignup />} />
-  <Route path="/Admin-Dashboard" element={<AdminDashboard />} />
-</Routes> */
-}
-
 const authProtectedRoutes = [
   { path: "/edit-profile", component: <UpdateProfile /> },
   { path: "/order-history", component: <OrderHistory /> },
   { path: "/help-center", component: <OrderHistory /> },
+  { path: "/Checkout", component: <Checkout /> },
+  { path: "/thankyou", component: <Thankyou /> },
 ];
 
 const publicRoutes = [
@@ -34,14 +28,12 @@ const publicRoutes = [
   { path: "/signup", component: <Signup /> },
   { path: "/products", component: <Products /> },
   { path: "/Products/:keyword", component: <Products /> },
-  { path: "/Product/:id", component: <Products /> },
-  { path: "/ProductDetails", component: <ProductDetails /> },
+  { path: "/Product/:id", component: <ProductDetails /> },
+  // { path: "/ProductDetails", component: <ProductDetails /> },
   { path: "/ShopDetails", component: <ShopDetails /> },
-  { path: "/Checkout", component: <Checkout /> },
   { path: "/Cart", component: <Cart /> },
   { path: "/Contact", component: <Contact /> },
   { path: "/About", component: <About /> },
-  { path: "/thankyou", component: <Thankyou /> },
   { path: "/VendorRegistration", component: <VendorRegistration /> },
 ];
 
