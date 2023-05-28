@@ -8,6 +8,7 @@ import ProductDetails from "../pages/en/ProductDetails";
 import Products from "../pages/en/Products";
 import Thankyou from "../pages/en/Thankyou";
 import OrderHistory from "../pages/orders/OrderHistory";
+import ForgotPassword from "../pages/password/ForgotPassword";
 import UpdateProfile from "../pages/profile/UpdateProfile";
 import Login from "../pages/users/Login";
 import Signup from "../pages/users/Signup";
@@ -35,6 +36,7 @@ const publicRoutes = [
   { path: "/Contact", component: <Contact /> },
   { path: "/About", component: <About /> },
   { path: "/VendorRegistration", component: <VendorRegistration /> },
+  { path: "/password/forgot", component: <ForgotPassword /> },
 ];
 
 export { authProtectedRoutes, publicRoutes };
