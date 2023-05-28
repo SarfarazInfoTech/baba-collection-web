@@ -2,7 +2,6 @@ import React from "react";
 import { useGeolocated } from "react-geolocated";
 
 const GeoLocation = (props) => {
-  alert("g")
   return props.isGeolocationAvailable ? (
     props.isGeolocationEnabled ? (
       props.coords ? (
