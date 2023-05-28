@@ -6,6 +6,8 @@ import {
   SIGNUP_SUCCESS,
   SIGNUP_FAILED,
   CLEAR_ERRORS,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAILED,
 } from "../contants/UserConstant";
 
 export const userReducer = (state = { user: [] }, action) => {
@@ -31,6 +33,18 @@ export const userReducer = (state = { user: [] }, action) => {
         loading: false,
         isAuth: false,
         user: null,
+        error: action.payload,
+      };
+    case LOGOUT_SUCCESS:
+      return {
+        loading: false,
+        isAuth: false,
+        user: null,
+      };
+    case LOGOUT_FAILED:
+      return {
+        ...state,
+        loading: false,
         error: action.payload,
       };
     case CLEAR_ERRORS:

@@ -6,6 +6,8 @@ import {
   SIGNUP_SUCCESS,
   SIGNUP_FAILED,
   CLEAR_ERRORS,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAILED,
 } from "../contants/UserConstant";
 import axios from "axios";
 
@@ -23,6 +25,20 @@ export const login = (email, password) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: LOGIN_FAILED,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+export const logout = () => async (dispatch) => {
+  try {
+    const config = { headers: { "Content-Type": "application/json" } };
+    await axios.post(`/api/v1/logout`, config);
+
+    dispatch({ type: LOGOUT_SUCCESS, payload: "Logout success" });
+  } catch (error) {
+    dispatch({
+      type: LOGOUT_FAILED,
       payload: error.response.data.message,
     });
   }

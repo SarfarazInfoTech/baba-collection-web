@@ -14,6 +14,8 @@ import Login from "../pages/users/Login";
 import Signup from "../pages/users/Signup";
 import ShopDetails from "../pages/vender/ShopDetails";
 import VendorRegistration from "../pages/vender/VendorRegistration";
+import UpdateProfile from "../pages/profile/UpdateProfile";
+import OrderHistory from "../pages/orders/OrderHistory";
 
 function App() {
   return (
@@ -34,6 +36,9 @@ function App() {
         <Route path="/Contact" element={<Contact />} />
         <Route path="/About" element={<About />} />
         <Route path="/thankyou" element={<Thankyou />} />
+        <Route path="/edit-profile" element={<UpdateProfile />} />
+        <Route path="/order-history" element={<OrderHistory />} />
+        <Route path="/help-center" element={<OrderHistory />} />
 
         {/* Admin-user */}
         <Route path="/Admin-Login" element={<AdminLogin />} />
